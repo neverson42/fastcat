@@ -1,18 +1,62 @@
 <html>
 <head>
 <title>Fast CAT Calculator
-<script>
-const conversionFactor = 204.545;
-
-</script>
 </title>
+<style type="text/css">
+.fraction {
+  display: inline-block;
+  font-size: 1.2em;
+  padding: 0 0.2em;
+  text-align: center;
+  vertical-align: middle;
 
-<label for="titles">Select Title:</label> 
-    <select name="titles" id="titles"> 
-        <option value="BCAT">BCAT (150pts)</option> 
-        <option value="CCAT">CCAT (500pts)</option> 
-        <option value="DCAT">DCAT (1000pts)</option> 
-        <option value="FCAT">FCAT (more)</option> 
-    </select>
+  &:before {
+    border-bottom: 1px solid #000;
+    content: attr(top);
+    display: block;
+    line-height: 1.6em;
+    padding: 0 0.2em;
+  }
+  &:after {
+    content: attr(bottom);
+    display: block;
+    line-height: 1.6em;
+    padding: 0 0.2em;
+  }
+}
+</style>
 
+</head>
+<body>
+<script>
+	function calculate() {
+		alert();
+		var hc = ;
+		var t =  document.getElementById('time').value);
+		document.getElementById("points").value = 204.545/t*hc;
+	}
+</script>
+POINTS = <div class="fraction" top="204.545" bottom="TIME IN SECONDS"></div>X HANDICAP<br><br> 
+
+
+<form oninput="points.value=204.545/time.value*handicap.value">
+<!--<label for="titles">Select Title:</label> 
+	<select name="titles" id="titles"> 
+		<option value="BCAT">BCAT (150pts)</option> 
+		<option value="CCAT">CCAT (500pts)</option> 
+		<option value="DCAT">DCAT (1000pts)</option> 
+		<option value="FCAT">FCAT (more)</option> 
+	</select><br>
+	-->
+	Handicap: <select name="handicap" id="handicap"> 
+		<option value="1">(x1) 18"+</option> 
+		<option value="1.5">(x1.5) 12" - 18"</option> 
+		<option value="2">(x2) Under 12"</option> 
+	</select><br>
+	TIME: <input type="text" id="time" name="time"><br><br>
+	
+
+POINTS: <output name="points" id="points">
+</form>
+</body>
 </html>
