@@ -3,6 +3,15 @@
 <title>Fast CAT Calculator
 </title>
 <style type="text/css">
+body {
+  background: #6e28d9;
+  padding: 0 24px;
+  color: white; /* Change my color to yellow */
+  margin: 0;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
 .fraction {
   display: inline-block;
   font-size: 1.2em;
@@ -24,18 +33,15 @@
     padding: 0 0.2em;
   }
 }
-.points {
-	$sass-precision: 5;
-}
 </style>
 
 </head>
 <body>
 
-POINTS = <div class="fraction" top="204.545" bottom="TIME IN SECONDS"></div>X HANDICAP<br><br> 
+POINTS = <div class="fraction" top="204.545" bottom="TIME IN SECONDS"></div>X HANDICAP<br><br>
 
 
-<form oninput="points.value=204.545/time.value*handicap.value">
+<form name="calculator" id="calculator" oninput="points.value=204.545/time.value*handicap.value">
 <!--<label for="titles">Select Title:</label> 
 	<select name="titles" id="titles"> 
 		<option value="BCAT">BCAT (150pts)</option> 
@@ -44,7 +50,7 @@ POINTS = <div class="fraction" top="204.545" bottom="TIME IN SECONDS"></div>X HA
 		<option value="FCAT">FCAT (more)</option> 
 	</select><br>
 	-->
-	Handicap: <select name="handicap" id="handicap"> 
+	Handicap: <select name="handicap" id="handicap"> <!--? block explaining handicap with popup-->
 		<option value="1">(x1) 18"+</option> 
 		<option value="1.5">(x1.5) 12" - 18"</option> 
 		<option value="2">(x2) Under 12"</option> 
