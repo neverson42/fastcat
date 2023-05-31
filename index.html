@@ -3,7 +3,6 @@
 <title>Fast CAT Calculator
 </title>
 <style type="text/css">
-
 .fraction {
   display: inline-block;
   font-size: 1.2em;
@@ -24,33 +23,132 @@
     line-height: 1.6em;
     padding: 0 0.2em;
   }
+  .time {
+	display: inline;
+  }
+  .pointentry {
+	display: inline;
+  }
+  .timeentry {
+  display: inline;
 }
 </style>
 
 </head>
 <body>
 
+<script>
+	function precise_round(n, r) {
+		let int = Math.floor(n).toString()
+		if (typeof n !== 'number' || typeof r !== 'number') return 'Not a Number'
+		if (int[0] == '-' || int[0] == '+') int = int.slice(int[1], int.length)
+		return n.toPrecision(int.length + r)
+	}
+
+	function fcatvis(elem) {
+		if (elem.value == "1500")
+			document.getElementById("numfcat").style.display = 'inline';
+		else {
+			document.getElementById("numfcat").style.display = 'none';
+			document.getElementById("fcatnum").value="0";
+		}
+	}
+	function calculate() {
+		document.getElementById("output").style.display = "block";
+		const a = new Array();
+		for(var i = 0; i < document.getElementsByClassName('time').length; i++) {
+			a[i] = [1*document.getElementsByClassName('time')[i].innerHTML.split(',')[0],1*document.getElementsByClassName('time')[i].innerHTML.split(',')[1]];
+		}
+		let avg = a[0].map((col, i) => a.map(row => row[i]).reduce((acc, c) => acc + c, 0) / a.length);
+		document.getElementById('ppr').value=avg[1];
+		document.getElementById('runs').value=Math.ceil(document.getElementById('pointsreq').value/avg[1]);
+	}
+	function showEst() {
+		document.getElementById("estLink").remove();
+		document.getElementById("estimator").style.display = "block";	
+	}
+	function addTime() {
+		document.getElementById('prevtimes').style.display = "inline";
+		const newTime = [document.getElementById('time').value,document.getElementById('points').value,''];
+		var newdiv="<div class='time'>"+newTime+" <a href='#' onclick='this.parentNode.remove();'>(delete)</a></div>"
+		document.getElementById('prevtimes').innerHTML+=newdiv;
+	}
+</script>
+	
 POINTS = <div class="fraction" top="204.545" bottom="TIME IN SECONDS"></div>X HANDICAP<br><br>
 
-
-<form name="calculator" id="calculator" oninput="points.value=204.545/time.value*handicap.value">
-<!--<label for="titles">Select Title:</label> 
-	<select name="titles" id="titles"> 
-		<option value="BCAT">BCAT (150pts)</option> 
-		<option value="CCAT">CCAT (500pts)</option> 
-		<option value="DCAT">DCAT (1000pts)</option> 
-		<option value="FCAT">FCAT (more)</option> 
-	</select><br>
-	-->
-	Handicap: <select name="handicap" id="handicap"> <!--? block explaining handicap with popup-->
+<form name="calculator" id="calculator" oninput="points.value=precise_round(204.545/time.value*handicap.value,2);">
+	Handicap: <select name="handicap" id="handicap"> <!--add ? block explaining handicap with popup-->
 		<option value="1">(x1) 18"+</option> 
 		<option value="1.5">(x1.5) 12" - 18"</option> 
 		<option value="2">(x2) Under 12"</option> 
 	</select><br>
-	TIME: <input type="text" id="time" name="time"><br><br>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function () {
+			$(".floatNumberField").change(function() {
+			$(this).val(parseFloat($(this).val()).toFixed(3));
+			});
+		});
+		</script>
+
+TIME <input onfocus='this.value="";' type="number" id='time' class="floatNumberField" value="0.000" placeholder="0.000" step="0.001" />
+<br><br>
 	
 
 POINTS: <output name="points" id="points"></output>
 </form>
+<div id="estLink">
+	<a href="#" onclick="showEst();">Estimator (WIP)</a>
+</div>
+</div>
+
+<div id="estimator" style="display: none;">	
+	<a href="#" onclick="addTime()">ADD TIME</a>
+	<form oninput="pointsreq.value=1*titles.value+fcatnum.value*500-startpts.value">
+		Starting Points: <input type="text" name="startpts" id="startpts"><br>
+		<label for="titles">Select Target Title:</label> 
+			<select name="titles" id="titles" onChange="fcatvis(this);"> 
+				<option value="150">BCAT (150pts)</option> 
+				<option value="500">CCAT (500pts)</option> 
+				<option value="1000">DCAT (1000pts)</option> 
+				<option value="1500">FCAT (1500pts+)</option> 
+			</select>
+			&nbsp;
+			<div id="numfcat" style="display: none;">
+				Select FCAT number: 
+				<select name="fcatnum" id="fcatnum"> 
+					<option value="0">1</option> 
+					<option value="1">2</option> 
+					<option value="2">3</option> 
+					<option value="3">4</option> 
+					<option value="4">5</option>
+					<option value="5">6</option>
+					<option value="6">7</option>
+					<option value="7">8</option>
+					<option value="8">9</option>
+					<option value="9">10</option>
+				</select>
+			</div>	
+			<br>
+			Points required to title: <output id="pointsreq"></output>
+			<!--Previous times (one per line):<br>
+			<form id="prevtimes" oninput="averaget.value=">
+				<textarea  placeholder="8.144&#10;8.25&#10;8.164&#10;..." id="times" cols="10" rows="6"></textarea>
+				<output id="averaget">-->
+<br><br>
+
+<div id = "prevtimes" style="display: none;">TIMES:<br> 
+
+</div>
+
+<br><br>
+		<input type="button" value="Calculate!" onclick="calculate();"><br>
+		<div id="output" style="display: none;">
+		Average Points per Run: <output id="ppr"></output><br>
+		Runs required for title: <output id="runs" name="runs"></output><br>
+		</div>
+</div>
+
 </body>
 </html>
