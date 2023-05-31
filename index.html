@@ -120,7 +120,7 @@ POINTS: <output name="points" id="points"></output>
 <div id="estimator" style="display: none;">	
 	<a href="#" onclick="addTime()">ADD TIME</a><br><br>
 	<form oninput="pointsreq.value=1*titles.value+fcatnum.value*500-startpts.value">
-		Starting Points: <input type="number" name="startpts" id="startpts" value="0.00" placeholder="0.00" step="0.01"><br>
+		Starting Points: <input type="number" onfocus='this.value="";' name="startpts" id="startpts" value="0.00" placeholder="0.00" step="0.01"><br>
 		<label for="titles">Select Target Title:</label> 
 			<select name="titles" id="titles" onChange="fcatvis(this);"> 
 				<option value="150">BCAT (150pts)</option> 
