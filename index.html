@@ -61,7 +61,7 @@
 		}
 		let avg = a[0].map((col, i) => a.map(row => row[i]).reduce((acc, c) => acc + c, 0) / a.length);
 		document.getElementById('avgt').value=precise_round(avg[0],3);
-		document.getElementById('ppr').value=precise_round(avg[1],3);
+		document.getElementById('ppr').value=precise_round(avg[1],2);
 		document.getElementById('runs').value=Math.ceil(document.getElementById('pointsreq').value/avg[1]);
 	}
 	function showEst() {
