@@ -3,6 +3,16 @@
 <title>Fast CAT Calculator
 </title>
 <style type="text/css">
+
+.footer {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	color: black;
+	text-align: center;
+	background-color: green;
+}
 .fraction {
   display: inline-block;
   font-size: 1.2em;
@@ -31,7 +41,7 @@
   }
   .timeentry {
   display: inline;
-}
+  }
 </style>
 
 </head>
@@ -74,6 +84,9 @@
 		var newdiv="<div class='time'>"+newTime+" <a href='#' onclick='this.parentNode.remove();'>(delete)</a></div>"
 		document.getElementById('prevtimes').innerHTML+=newdiv;
 	}
+	function noclickon() {
+		document.getElementById('noclicklink').innerHTML="At an average cost of $25 per run, this will cost you $"+parseInt(document.getElementById('runs').value)*25;
+	}
 </script>
 	
 POINTS = <div class="fraction" top="204.545" bottom="TIME IN SECONDS"></div>X HANDICAP<br><br>
@@ -105,7 +118,7 @@ POINTS: <output name="points" id="points"></output>
 </div>
 
 <div id="estimator" style="display: none;">	
-	<a href="#" onclick="addTime()">ADD TIME</a>
+	<a href="#" onclick="addTime()">ADD TIME</a><br><br>
 	<form oninput="pointsreq.value=1*titles.value+fcatnum.value*500-startpts.value">
 		Starting Points: <input type="text" name="startpts" id="startpts"><br>
 		<label for="titles">Select Target Title:</label> 
@@ -148,9 +161,11 @@ POINTS: <output name="points" id="points"></output>
 		<div id="output" style="display: none;">
 		Average Time: <output id="avgt"></output><br>
 		Average Points per Run: <output id="ppr"></output><br>
-		Runs required for title: <output id="runs" name="runs"></output><br>
+		Runs required for title: <output id="runs" name="runs"></output><br><br>
+		<div id='noclicklink'><a href='#' onclick='noclickon();'>... dont click this. lol</a></div>
 		</div>
 </div>
 
+<div class='footer'>Hey, if you like this thing... maybe buy me a fastcat run? Or a beer? Maybe a gas station coffee??? -- <a href='https://venmo.com/code?user_id=2598147771596800443'>Venmo</a> -- LOL worth a shot. </div>
 </body>
 </html>
