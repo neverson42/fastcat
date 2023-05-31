@@ -73,6 +73,7 @@
 		document.getElementById('avgt').value=precise_round(avg[0],3);
 		document.getElementById('ppr').value=precise_round(avg[1],2);
 		document.getElementById('runs').value=Math.ceil(document.getElementById('pointsreq').value/avg[1]);
+		document.getElementById('hiddencosts').innerHTML="At an average cost of $25 per run, this will cost you $"+parseInt(document.getElementById('runs').value)*25;
 	}
 	function showEst() {
 		document.getElementById("estLink").remove();
@@ -85,7 +86,8 @@
 		document.getElementById('prevtimes').innerHTML+=newdiv;
 	}
 	function noclickon() {
-		document.getElementById('noclicklink').innerHTML="At an average cost of $25 per run, this will cost you $"+parseInt(document.getElementById('runs').value)*25;
+		document.getElementById('noclicklink').style.display="none;
+		document.getElementById('hiddencosts').style.display="none;
 	}
 </script>
 	
@@ -163,6 +165,7 @@ POINTS: <output name="points" id="points"></output>
 		Average Points per Run: <output id="ppr"></output><br>
 		Runs required for title: <output id="runs" name="runs"></output><br><br>
 		<div id='noclicklink'><a href='#' onclick='noclickon();'>... dont click this. lol</a></div>
+		<div id='hiddencosts' style='display: none;'></div>
 		</div>
 </div>
 
