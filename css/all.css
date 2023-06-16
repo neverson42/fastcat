@@ -411,6 +411,7 @@ h2.slogan{
 }
 .footer-content a {color:#060 !important;}
 .footer-content {
+	text-align:center;
 	max-width: 1170px;
 	margin: 0 auto;
 	padding: 10px 0 10px;
@@ -466,15 +467,6 @@ h2.slogan{
 
 
 /* MY STUFF*/
-.footer {
-	position: fixed;
-	width: 100%;
-	left: 0;
-	bottom: 0;
-	color: black;
-	text-align: center;
-	background-color: #50af6f;
-}
 .fraction {
   font-size: 1.2em;
   display: inline-block;

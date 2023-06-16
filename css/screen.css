@@ -66,19 +66,11 @@
 	.box_timeline_holder,.box_timeline{background: none;}
 }
 @media only screen and (max-width : 768px) {
-	.footer-content {padding: 45px 10px 20px;}
+	.footer-content {padding: 10px 10px 10px;}
 	.menu_trigger {
 		display: block;
 		top: 28px;
 	}
-	.footer-content .social{margin: 0 auto 30px;}
-	.footer-content .social li{margin: 0 0 0 4px; width: 50px; height: 50px;}
-	.footer-content .social li.email a{	background-size: 20px auto;	}
-	.footer-content .social li.facebook a{	background-size: 15px auto;	}
-	.footer-content .social li.google a{	background-size: 20px auto;	}
-	.footer-content .social li.twitter a{	background-size: 20px auto;	}
-	.footer-content .social li.pinterest a{	background-size: 20px auto;	}
-	.footer-content .social{width: 269px;}
 	.logo {font-size: 56px;line-height: 68px;}
 	#wrapper.inner .menu_trigger,#wrapper.portfolio .menu_trigger{top: 6px;}
 }
