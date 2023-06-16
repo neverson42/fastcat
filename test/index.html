@@ -48,12 +48,12 @@ POINTS: <output id="points"></output><br><br>
 
 </form>
 <div id="estLink">
-	<a href="#" onclick="showEst();">Estimator (WIP)</a>
+	<a onclick="showEst();">Estimator (WIP)</a>
 </div>
 
 
 <div id="estimator" style="display: none;">	
-	<a href="#" onclick="addTime()">ADD TIME</a><br><br>
+	<a onclick="addTime()">ADD TIME</a><br><br>
 	<form oninput="pointsreq.value=1*titles.value+fcatnum.value*500-startpts.value">
 		Starting Points: <input onfocus='this.value="";' type="number" name="startpts" id="startpts" value="0.00" placeholder="0.00" step="0.01" ><br>
 		<label for="titles">Select Target Title:</label> 
@@ -97,7 +97,7 @@ POINTS: <output id="points"></output><br><br>
 		Average Time: <output id="avgt"></output><br>
 		Average Points per Run: <output id="ppr"></output><br>
 		Runs required for title: <output id="runs" name="runs"></output><br><br>
-		<div id='noclicklink'><a href='#' onclick='noclickon();'>... dont click this. lol</a></div>
+		<div id='noclicklink'><a onclick='noclickon();'>... dont click this. lol</a></div>
 		</div>
 		<div id='hiddencosts' style='display: none;'></div>
 </div>

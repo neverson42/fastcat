@@ -103,7 +103,7 @@ function precise_round(n, r) {
 	function addTime() {
 		document.getElementById('prevtimes').style.display = "inline";
 		const newTime = [document.getElementById('time').value,document.getElementById('points').value,''];
-		var newdiv="<div class='time'>"+newTime+" <a href='#' onclick='this.parentNode.remove();'>(delete)</a></div>"
+		var newdiv="<div class='time'>"+newTime+" <a onclick='this.parentNode.remove();'>(delete)</a></div>"
 		document.getElementById('prevtimes').innerHTML+=newdiv;
 	}
 	function noclickon() {

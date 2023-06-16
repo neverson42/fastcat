@@ -125,7 +125,7 @@ body{
 	-webkit-text-size-adjust: none; 
 }
 img{border-style:none; vertical-align: top;}
-a{text-decoration:none; color:#6e6e6e;}
+a{text-decoration:none; color:#6e6e6e;cursor: pointer;}
 a:hover{text-decoration:underline;}
 
 #wrapper{
