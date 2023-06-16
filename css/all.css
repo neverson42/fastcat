@@ -411,6 +411,7 @@ h2.slogan{
 }
 .footer-content a {color:#060 !important;}
 .footer-content {
+	font-size:small;
 	text-align:center;
 	max-width: 1170px;
 	margin: 0 auto;
