@@ -403,15 +403,18 @@ h2.slogan{
 #footer {
     width:100%;
     overflow:hidden;
-    display:table-footer-group;
-    background:#fff;
+    width: 100%; 
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
+    background:#ccc;
 }
-.footer-content a {color:#023020 !important;}
+.footer-content a {color:#060 !important;}
 .footer-content {
 	max-width: 1170px;
 	margin: 0 auto;
 	padding: 10px 0 10px;
-	color: #a5a5a5;
+	color: #333;
 }
 
 /* begin add	 */
