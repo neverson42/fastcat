@@ -55,7 +55,7 @@ POINTS: <div style="display: inline;" id="points"></div><br>
 
 <div id="estimator" style="display: none;">	
 	<a onclick="addTime()">ADD TIME</a><br><br>
-	<form oninput="pointsreq.value=1*titles.value+fcatnum.value*500-startpts.value">
+	<form oninput='calc_title();'>
 		Starting Points: <input onfocus='this.value="";' type="number" name="startpts" id="startpts" value="0.00" placeholder="0.00" step="0.01" ><br>
 		<label for="titles">Select Target Title:</label> 
 			<select name="titles" id="titles" onChange="fcatvis(this);"> 

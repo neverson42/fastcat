@@ -82,21 +82,25 @@ function insta_calc() {
 	}
 
 }
+function calc_title() {
+	document.getElementById("pointsreq").value = 1*document.getElementById('titles').value + document.getElementById('fcatnum').value*500 - document.getElementById('startpts').value*1;	
+}
 function precise_round(n, r) {
-		let int = Math.floor(n).toString()
-		if (typeof n !== 'number' || typeof r !== 'number') return 'Not a Number'
-		if (int[0] == '-' || int[0] == '+') int = int.slice(int[1], int.length)
-		return n.toPrecision(int.length + r)
-	}
+	let int = Math.floor(n).toString()
+	if (typeof n !== 'number' || typeof r !== 'number') return 'Not a Number'
+	if (int[0] == '-' || int[0] == '+') int = int.slice(int[1], int.length)
+	return n.toPrecision(int.length + r)
+}
 
-	function fcatvis(elem) {
-		if (elem.value == "1000")
-			document.getElementById("numfcat").style.display = 'inline';
-		else {
-			document.getElementById("numfcat").style.display = 'none';
-			document.getElementById("fcatnum").value="0";
-		}
+function fcatvis(elem) {
+	if (elem.value == "1000")
+		document.getElementById("numfcat").style.display = 'inline';
+	else {
+		document.getElementById("numfcat").style.display = 'none';
+		document.getElementById("fcatnum").value=0;
+		calc_title();
 	}
+}
 	function calculate() {
 		document.getElementById("output").style.display = "block";
 		const a = new Array();
