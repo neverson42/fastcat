@@ -72,10 +72,14 @@ $(window).resize(function() {
 function insta_calc() {
 	document.getElementById('points').innerHTML=precise_round(204.545/document.getElementById('time').value*document.getElementById('handicap').value,2);
 	document.getElementById('speed').innerHTML=precise_round(204.545/document.getElementById('time').value,2);
-	if(document.getElementById('handicap').value != 1)
+	if(document.getElementById('handicap').value != 1) {
 		document.getElementById("speed-div").style.display = 'inline';
-	else
+		document.getElementById("mph-div").style.display = 'inline';
+	}
+	else {
 		document.getElementById("speed-div").style.display = 'none';
+		document.getElementById("mph-div").style.display = 'none';
+	}
 
 }
 function precise_round(n, r) {
@@ -97,11 +101,12 @@ function precise_round(n, r) {
 		document.getElementById("output").style.display = "block";
 		const a = new Array();
 		for(var i = 0; i < document.getElementsByClassName('time').length; i++) {
-			a[i] = [1*document.getElementsByClassName('time')[i].innerHTML.split(',')[0],1*document.getElementsByClassName('time')[i].innerHTML.split(',')[1]];
+			a[i] = [1*document.getElementsByClassName('time')[i].innerHTML.split(',')[0],1*document.getElementsByClassName('time')[i].innerHTML.split(',')[1],1*document.getElementsByClassName('time')[i].innerHTML.split(',')[2]];
 		}
 		let avg = a[0].map((col, i) => a.map(row => row[i]).reduce((acc, c) => acc + c, 0) / a.length);
 		document.getElementById('avgt').value=precise_round(avg[0],3);
 		document.getElementById('ppr').value=precise_round(avg[1],2);
+		document.getElementById('mph').value=precise_round(avg[2],2);
 		document.getElementById('runs').value=Math.ceil(document.getElementById('pointsreq').value/avg[1]);
 		document.getElementById('hiddencosts').innerHTML="At an average cost of $25 per run, this will cost you $"+parseInt(document.getElementById('runs').value)*25;
 	}
@@ -111,7 +116,7 @@ function precise_round(n, r) {
 	}
 	function addTime() {
 		document.getElementById('prevtimes').style.display = "inline";
-		const newTime = [document.getElementById('time').value,document.getElementById('points').innerHTML*1,''];
+		const newTime = [document.getElementById('time').value,document.getElementById('points').innerHTML*1,precise_round(document.getElementById('points').innerHTML*1/document.getElementById('handicap').value,2),''];
 		var newdiv="<div class='time'>"+newTime+" <a onclick='this.parentNode.remove();'>(delete)</a></div>"
 		document.getElementById('prevtimes').innerHTML+=newdiv;
 	}
