@@ -69,6 +69,15 @@ $(window).resize(function() {
     }
 });
 
+function insta_calc() {
+	document.getElementById('points').innerHTML=precise_round(204.545/document.getElementById('time').value*document.getElementById('handicap').value,2);
+	document.getElementById('speed').innerHTML=precise_round(204.545/document.getElementById('time').value,2);
+	if(document.getElementById('handicap').value != 1)
+		document.getElementById("speed-div").style.display = 'inline';
+	else
+		document.getElementById("speed-div").style.display = 'none';
+
+}
 function precise_round(n, r) {
 		let int = Math.floor(n).toString()
 		if (typeof n !== 'number' || typeof r !== 'number') return 'Not a Number'
@@ -77,7 +86,7 @@ function precise_round(n, r) {
 	}
 
 	function fcatvis(elem) {
-		if (elem.value == "1500")
+		if (elem.value == "1000")
 			document.getElementById("numfcat").style.display = 'inline';
 		else {
 			document.getElementById("numfcat").style.display = 'none';
@@ -102,7 +111,7 @@ function precise_round(n, r) {
 	}
 	function addTime() {
 		document.getElementById('prevtimes').style.display = "inline";
-		const newTime = [document.getElementById('time').value,document.getElementById('points').value,''];
+		const newTime = [document.getElementById('time').value,document.getElementById('points').innerHTML*1,''];
 		var newdiv="<div class='time'>"+newTime+" <a onclick='this.parentNode.remove();'>(delete)</a></div>"
 		document.getElementById('prevtimes').innerHTML+=newdiv;
 	}

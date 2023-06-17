@@ -25,8 +25,8 @@
 		</div>
 		<div class="wrapper-holder grey">
 			<section id="main">
-			<p>(this is a work in progress)<br>(there is no ccat. lol. I'll fix it when i get home from work today)</p>
-				<form id="calculator" oninput="points.value=precise_round(204.545/time.value*handicap.value,2);">
+			<p>(this is a work in progress)</p>
+				<form id="calculator" oninput="insta_calc();">
 	Handicap: <select id="handicap"> <!--add ? block explaining handicap with popup-->
 		<option value="1">(x1) 18"+</option> 
 		<option value="1.5">(x1.5) 12" - 18"</option> 
@@ -44,7 +44,8 @@
 TIME: <input onfocus='this.value="";' type="number" id='time' class="floatNumberField" value="0.000" placeholder="0.000" step="0.001" />
 <br><br>
 	
-POINTS: <output id="points"></output><br><br>
+POINTS: <div style="display: inline;" id="points"></div><br>
+<div id='speed-div' style="display: none;">SPEED: <div style="display: inline;" id="speed"></div> mph</div><br>
 
 </form>
 <div id="estLink">
@@ -59,9 +60,8 @@ POINTS: <output id="points"></output><br><br>
 		<label for="titles">Select Target Title:</label> 
 			<select name="titles" id="titles" onChange="fcatvis(this);"> 
 				<option value="150">BCAT (150pts)</option> 
-				<option value="500">CCAT (500pts)</option> 
-				<option value="1000">DCAT (1000pts)</option> 
-				<option value="1500">FCAT (1500pts+)</option> 
+				<option value="500">DCAT (500pts)</option> 
+				<option value="1000">FCAT (1000pts+)</option> 
 			</select>
 			&nbsp;
 			<div id="numfcat" style="display: none;">
@@ -95,7 +95,7 @@ POINTS: <output id="points"></output><br><br>
 		<input type="button" value="Calculate!" onclick="calculate();"><br>
 		<div id="output" style="display: none;">
 		Average Time: <output id="avgt"></output><br>
-		Average Points per Run: <output id="ppr"></output><br>
+		Average Points per Run: <output id="ppr"></output><br><br>
 		Runs required for title: <output id="runs" name="runs"></output><br><br>
 		<div id='noclicklink'><a onclick='noclickon();'>... dont click this. lol</a></div>
 		</div>
